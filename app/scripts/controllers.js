@@ -34,7 +34,7 @@ angular.module('TaxiApp.controllers', [])
   }
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, uiGmapGoogleMapApi) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -43,6 +43,9 @@ angular.module('TaxiApp.controllers', [])
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
   ];
+
+    $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
+    $scope.options = {scrollwheel: false};
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
