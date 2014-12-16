@@ -51,6 +51,7 @@ angular.module('itaxiApp')
                         ]
                     };
                 },
+                
 
                 init: function () {
 

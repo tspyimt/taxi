@@ -120,8 +120,12 @@ angular.module('Pow', [])
         return {
             restrict: 'ECMA',
             transclude: false,
+
             link: function (scope, el, attr) {
-                angular.element(el).on('click', function () {
+                
+                var clickEventType = document.ontouchstart !== null ? 'mousedown' : 'touchstart';
+
+                angular.element(el).on(clickEventType, function () {
 
                     var menuEl = document.querySelectorAll('pow-menu'),
                         menuHasOpen = angular.element(menuEl).find('nav').hasClass('open');
