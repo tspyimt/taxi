@@ -1,5 +1,5 @@
 
-angular.module('Pow')
+angular.module('Pow', [])
    
     .directive('powMenu', function ($rootScope) {
         return {
@@ -37,7 +37,7 @@ angular.module('Pow')
                                 }
                                 posX = (Math.min( Math.max(0, posX), 250 - startAt)) -250;
                                 
-                                document.getElementById('mana').innerHTML = posX;
+                                
 
                             if(!navMenu.hasClass('open')){
                                 navMenu.removeClass('menu-animate');
@@ -53,8 +53,8 @@ angular.module('Pow')
                             $('.main-container').off(moveEventType);
                             $('.main-container').off(endEventType);
 
-                            console.log('blabla');
-                            document.getElementById('mana').innerHTML = 'Touch end' + posX + ' --- ' + 250/2 + '  ++++   ' + ((250/2) + posX) ;
+                            
+                            
                             navMenu.addClass('menu-animate');
                             if(((250/2) + posX) > 0){
 
