@@ -129,7 +129,6 @@ angular.module('itaxiApp')
 
                     gMaps.map.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
 
-
                     gMaps.geocoder = new google.maps.Geocoder();
 
                     /*gMaps.directionsDisplay = new google.maps.DirectionsRenderer({

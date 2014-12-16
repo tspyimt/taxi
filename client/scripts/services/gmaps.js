@@ -72,7 +72,22 @@ angular.module('SudaTaxi')
 
                     gMaps.map.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
 
-                    /*gMaps.geocoder = new google.maps.Geocoder();*/
+                    gMaps.setCurrentPoint(new L.LatLng(position.coords.latitude, position.coords.longitude));
+
+                    gMaps.map.on('move', function (){
+                    	gMaps.setCurrentPoint(gMaps.map.getCenter());
+                    })
+
+                    gMaps.map.on('moveend', function (){
+                    	// Get Address Info From LatLng
+                    	gMaps.geocoder.geocode({'latLng': gMaps.map.getCenter()}, function (results, status) { 
+	                        if (status === 'OK') {
+                             	gMaps.currentPoint.bindPopup(results[0].formatted_address).openPopup()
+	                        }
+                    	});
+                    })
+
+                    gMaps.geocoder = new google.maps.Geocoder();
 
                     /*gMaps.infoBox = new google.maps.InfoWindow();*/
 
@@ -92,7 +107,7 @@ angular.module('SudaTaxi')
                             iconUrl: './images/me.png',
                             iconSize: [40, 62]
                         })
-                    }).addTo(me.map)/*.bindPopup("<b>Vị trí</b><br /> Hiện tại của bạn")*/;
+                    }).addTo(me.map);
 
                     me.currentPoint.on('click', function () { // Bắt sự kiện của người dùng trên bản đồ
                         me.map.panTo(me.currentPoint.getLatLng());
