@@ -1,0 +1,292 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+
+html {
+  line-height: 1;
+}
+
+
+ol, ul {
+  list-style: none;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+
+q, blockquote {
+  quotes: none;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+
+a img {
+  border: none;
+}
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+
+html, body {
+	font-family: "Helvetica Neue Light",Roboto,sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 140%;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	/* user-select: none;
+	-webkit-user-select: none; */
+}
+
+.pow-app {
+  
+}
+
+.pow-app a, .pow-app a:hover, .pow-app a:focus,
+.pow-app input, .pow-app input:focus,
+.pow-app select, .pow-app select:focus,
+.pow-app textarea, .pow-app textarea:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  background: linear-gradient(to bottom, transparent, transparent);
+}
+
+.pow-app input[type="search"]::-webkit-search-decoration,
+.pow-app input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.pow-app article,
+.pow-app aside,
+.pow-app details,
+.pow-app figcaption,
+.pow-app figure,
+.pow-app footer,
+.pow-app header,
+.pow-app hgroup,
+.pow-app nav,
+.pow-app section,
+.pow-app summary {
+  display: block;
+}
+
+.pow-app button,
+.pow-app input[type="button"],
+.pow-app input[type="reset"],
+.pow-app input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+.pow-app button,
+.pow-app input[type="button"],
+.pow-app input[type="reset"],
+.pow-app input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+.pow-app label {
+  -webkit-appearance: none;
+}
+
+
+/*  Header  */
+.pow-app .header-container{
+	height: 55px;
+	position: relative;
+	width: 100%;
+}
+.pow-app .header-container header{
+	background: none repeat scroll 0% 0% #FCDE2B;
+}
+
+.pow-app .header-container header {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  display: table;
+}
+/* line 13, _uiheader.scss */
+.pow-app .header-container header h1, .pow-app .header-container header nav {
+  display: table-cell;
+  overflow: hidden;
+}
+
+.pow-app .header-container header nav:first-child {
+  width: 33%;
+}
+
+.pow-app .header-container header nav:last-child {
+  width: 33%;
+}
+
+.pow-app .header-container header nav:nth-child(2) {
+  width: 33%;
+}
+
+.pow-app .header-container header nav:first-child {
+  padding-left: 10px;
+  text-align: left;
+}
+
+.pow-app .header-container header nav:last-child {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.pow-app .header-container header nav:first-child a {
+  text-align: left;
+}
+
+.pow-app .header-container header .m-nav-item {
+  position: relative;
+  top: 10px;
+  padding: 0;
+  display: inline-block;
+}
+
+.pow-app .header-container header.m-hidden {
+  display: none;
+}
+
+.pow-app .header-container header h1 {
+  text-align: center;
+  font-weight: bold;
+  line-height: 55px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pow-app .header-container header h1 img {
+  position: relative;
+  top: 4px;
+}
+.pow-app .header-container header .menu-icon {
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 34px;
+}
+.pow-app .padding{
+	padding: 0.5em 1em;
+	box-sizing: border-box;	
+}
+ 
+
+/*  Container */
+
+.pow-app .main-container, 
+.pow-app .main-container .scroll-content {
+	-webkit-transition-duration: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-transform: translateZ(0);
+}
+
+.pow-app .main-container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-bottom: 55px;
+}
+
+.pow-app .main-container .scroll-content{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+	overflow-x: hidden;
+	float: left;
+}
+
+
+.pow-app .menu-left {
+  display: block;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 100;
+  -webkit-transform: translate3d(-250px, 0, 0);
+  transform: translate3d(-250px, 0, 0);
+  top: 55px;
+  background: #434b5c;
+}
+
+.pow-app .menu-animate{
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pow-app .menu-left.open {
+  -webkit-transform: translate3d(0, 0, 0)!important;
+  -moz-transform: translate3d(0, 0, 0)!important;
+  -o-transform: translate3d(0, 0, 0)!important;
+  transform: translate3d(0, 0, 0)!important;
+  z-index: 100;
+}
+
+
+.touch-speed{
+  touch-action: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.pow-backdrop{
+  position: fixed;
+}
+
+.pow-backdrop.open {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.1);
+
+}

@@ -12,3 +12,4 @@ plugins
 *.DS_Store
 .idea
 app/scripts/config.js
+client/bower_components
