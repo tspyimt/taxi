@@ -1,0 +1,27 @@
+@font-face {
+  font-family: myriad;
+  src: url(../fonts/MYRIADPRO-REGULAR.OTF);
+}
+
+
+
+.leaflet-popup-content{
+	max-width: 200px!important;
+}
+.menu-left li a{
+	text-decoration: none;
+	display: block;
+	margin-left:10px;
+	color:#333333;
+	font-family: myriad;
+}
+.menu-left li {
+    padding: 17px 10px !important;
+    margin-bottom: 1px;
+}
+.menu-left li.active {
+    background:#f2f2f2;
+}
+.menu-left li:hover {
+    background:#f2f2f2;
+}

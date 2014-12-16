@@ -217,7 +217,7 @@ html, body {
 /*  Container */
 
 .pow-app .main-container, 
-.pow-app .main-container .scroll-content {
+.pow-app .scroll-content {
 	-webkit-transition-duration: 0;
 	-webkit-backface-visibility: hidden;
 	-webkit-transform: translate3d(0, 0, 0);
