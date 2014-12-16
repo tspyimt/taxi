@@ -125,8 +125,11 @@ angular.module('Pow', [])
                 
                 var clickEventType = document.ontouchstart !== null ? 'mousedown' : 'touchstart';
 
-                angular.element(el).on(clickEventType, function () {
+                
+                var mc = new Hammer(el[0]);
 
+                mc.on("tap", function(ev) {
+                    ev.stopPropagation();
                     var menuEl = document.querySelectorAll('pow-menu'),
                         menuHasOpen = angular.element(menuEl).find('nav').hasClass('open');
 
@@ -135,9 +138,9 @@ angular.module('Pow', [])
                     } else {
                         $rootScope.$broadcast('CLOSE_NAV_MENU');
                     }
+
+                    ev.preventDefault();
                 });
-
-
             }
         }
     })

@@ -1,7 +1,8 @@
 angular.module('SudaTaxi', [
 	'ui.router',
 	'ngSanitize',
-	'Pow'
+	'Pow',
+	'hmTouchEvents'
 ])
 
 

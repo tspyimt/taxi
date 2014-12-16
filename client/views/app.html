@@ -2,13 +2,13 @@
 <div class="header-container">
 	<header style="text-align:center">
 		<nav >
-			<a toggle-menu class="menu-icon touch-speed" ><span class="ion-navicon"></span></a>
+			<div toggle-menu class="menu-icon touch-speed" ><span class="ion-navicon"></span></div>
 		</nav>
 		<nav>
-			<h1>Suda</h1>
+			<h1>&nbsp;</h1>
 		</nav>
 		<nav>
-			<a toggle-menu class="menu-icon touch-speed" ><span class="ion-navigate"></span></a>
+			<div toggle-menu class="menu-icon touch-speed" ><span class="ion-navigate"></span></div>
 		</nav>
 	</header>
 </div>
@@ -18,11 +18,22 @@
 <pow-menu>
     <div>
         <nav class="menu-left scroll-content" id="myMenu" ng-class="MenuClass">
+        	<div class="userInfo">
+        		<div class="avatar-circle">
+					<img src="images/avt.png" alt="">
+        		</div>
+				<div class="info">
+					<strong>Nguyễn Văn Thịnh</strong> <br/>
+					<p>Đăng xuất</p>
+				</div>
+        	</div>
+        	<div class="clearfix"></div>
         	<ul>
-        		<li toggle-menu><a href="">Trang chủ</a></li>
-        		<li toggle-menu><a href="">Lịch sử</a></li>
-        		<li toggle-menu><a href="">Thanh toán</a></li>
-        		<li toggle-menu><a href="">Liên hệ</a></li>
+        		<li toggle-menu><a href="">Home</a></li>
+        		<li toggle-menu><a href="">History</a></li>
+        		<li toggle-menu><a href="">Payment</a></li>
+        		<li toggle-menu><a href="">Contact</a></li>
+        		<li toggle-menu><a href="">Logout</a></li>
         	</ul>
         </nav>
     </div>

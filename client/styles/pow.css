@@ -207,6 +207,7 @@ html, body {
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 34px;
+  padding: 10px 12px;
 }
 .pow-app .padding{
 	padding: 0.5em 1em;
