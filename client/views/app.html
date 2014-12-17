@@ -29,11 +29,12 @@
         	</div>
         	<div class="clearfix"></div>
         	<ul>
-        		<li toggle-menu><a href="">Home</a></li>
-        		<li toggle-menu><a href="">History</a></li>
-        		<li toggle-menu><a href="">Payment</a></li>
-        		<li toggle-menu><a href="">Contact</a></li>
-        		<li toggle-menu><a href="">Logout</a></li>
+        		<li toggle-menu hm-tap="$state.go('app.home')" ng-class="($state.includes('app.home')) ? 
+        		'active' : ''"><a>Home</a></li>
+        		<li toggle-menu hm-tap="$state.go('app.history')" ng-class="($state.includes('app.history')) ? 'active' : ''"><a>History</a></li>
+        		<!-- <li toggle-menu hm-tap="$state.go('app.payment')" ng-class="($state.includes('app.payment')) ? 'active' : ''"><a>Payment</a></li> -->
+        		<li toggle-menu hm-tap="$state.go('app.contact')" ng-class="($state.includes('app.contact')) ? 'active' : ''"><a>Contact</a></li>
+        		<li toggle-menu><a>Logout</a></li>
         	</ul>
         </nav>
     </div>

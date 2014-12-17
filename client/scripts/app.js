@@ -26,16 +26,40 @@ angular.module('SudaTaxi', [
 		.state('app.home', {
 			url: "home",
 			templateUrl: "views/home.html",
+			controller: function (gmaps, $timeout){
+				
+				$timeout(function (){
+					gmaps.init();
+				})
+			}
+		})
+		.state('app.history', {
+			url: "history",
+			templateUrl: "views/history.html",
 			controller: function (gmaps){
-				gmaps.init();
-
+				
+			}
+		})
+		.state('app.payment', {
+			url: "payment",
+			templateUrl: "views/payment.html",
+			controller: function (gmaps){
+				
+			}
+		})
+		.state('app.contact', {
+			url: "contact",
+			templateUrl: "views/contact.html",
+			controller: function (gmaps){
+				
 			}
 		})
 
-
 	}]) // End module config 
 
-.run( ['$rootScope', function ($rootScope){
+.run( ['$rootScope', '$state', function ($rootScope, $state){
+	$rootScope.$state = $state;
+
 	console.log('Run');
 }])
 

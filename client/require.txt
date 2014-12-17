@@ -1,0 +1,21 @@
+Client:
+
+1. Nhấn để chọn địa điểm hợac nhập một địa điểm khác 
+2. để gửi  yêu cầu đến driver người dùng sẽ chọn  kiểu xe (gôm 3 kiểu ). và nhập địa điểm đi 
+3. Tất cả các xe xung quanh vị trí sẽ đựơc hiên thị trên bản đồ (màu xanh - rảnh, đỏ - bận). Khách hàng có thể click vaò những xe hiển thị để xem thông tin lái xe và hình ảnh xe .
+4. Người dùng sẽ gọi cho cho xe mà họ chọn , hợac lái xe sẽ gọi cho client
+5. Nhưng khi client bắt đầu nói chuyện với driver , trạng thái của họ sẽ chuyển thành "on the phone" (màu da cam) và họ sẽ không thể nhận bất kỳ cụôc gọi nào
+6. Một khi driver và client đồng ý . Khi khách hàng đồng ý nó sẽ hiển thị gía tìền cho họ , hơạc nếu ko đồng ý thì client sẽ phải hủy yêu cầu ra khỏi bản đồ , hợac gửi lại yêu cầu khác đến các taxi xung quanh ngoại trừ các drive vừa không đồng ý . Sau khi gửi một yêu cầu khác , thi client có thể gọi hợac chấp nhận các driver khác gọi họ . 
+7. Nếu khách hàng và driver đồng ý vàf chấp nhận , client sẽ có thể xem và theo dõi lộ trình của driver . Tracking bao gồm khoảng cách (theo km ) và thời gian sắp đến (theo phút)
+8. Khi client đã đc đón , họ có thể chia sẻ realtime location với bạn bè hợac gia đình 
+9. Khi client họàn thành lộ trình , phương thức thanh toán sẽ là tiền mặt hơạc thẻ ưu đãi (no credit card fỏ this phase)
+
+
+
+
+5- The client will call the driver of his choice or the drivers will start calling the client.
+6- But when the client starts talking to a driver, his/her status will be “on the phone” (maybe orange color) and he can’t receive any more calls.
+7- Once the driver and client are in agreement, client accepts the pickup request and adds a total charge (price – this important for manager app) . Or, if no agreement is reached then the client will have to cancel pickup request ( off the map) or re-send another pickup request to all near-by drivers except the one did not reach an agreement with the driver. After submitting another pickup request, the client can call or allow other drivers to call him ( his status will change again to pickup request).
+8- If the client and driver are in agreement and accepted the service, the client will be able to see and track the driver’s route to pickup location. The tracking comes with distance in kilometer and expected arrival time in mins.
+9- Once the client got picked up, he/she can share real time location tracking with a friend or family member (for security).
+10- Once the client reached the final destination, method of payment will be either cash or pre-paid taxi card (no credit card for this phase). The client will complete the status to reached destination. 
