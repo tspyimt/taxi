@@ -21,19 +21,17 @@ angular.module('SudaTaxi', [
 			templateUrl: "views/app.html",
 			resolve: {
 				lang: function ($rootScope, $translation, $q){
+
 					var defer = $q.defer();
 
 					$translation.getTranslation($rootScope, 'vi', function (data){
-						console.log('Lang, ', data);
 						defer.resolve(data);
 					})
 					return defer.promise;
 
 				}
 			},
-			controller: function (lang){
-				console.log('hello')
-			}
+			controller: 'appController'
 
 		})
 		.state('app.home', {
@@ -41,9 +39,7 @@ angular.module('SudaTaxi', [
 			templateUrl: "views/home.html",
 			controller: function (gmaps, $timeout){
 				
-				$timeout(function (){
-					gmaps.init();
-				})
+				
 			}
 		})
 		.state('app.history', {
@@ -81,6 +77,6 @@ angular.module('SudaTaxi', [
 			
 		})
 	}
-	console.log('Run');
+	
 }])
 

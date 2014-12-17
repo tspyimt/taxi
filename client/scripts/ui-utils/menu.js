@@ -18,15 +18,20 @@ angular.module('Pow', [])
                     $rootScope.$broadcast('CLOSE_NAV_MENU');
                 })
 
-                $('.main-container').on(clickEventType, function (ev){
-                    
+                $(document).on(clickEventType, function (ev){
+
                     var startAt = 0,
                         endAt, 
                         posX = 0;
 
                     if(ev.hasOwnProperty('touches') && ev.touches[0].pageX < 5){
                         console.log(ev.touches[0].pageX)
+                        
+                        ev.stopPropagation();
                         ev.preventDefault();
+                        
+                        
+
                         
                         var moveHandler = function (e){
                                 posX = e.pageX - startAt;
@@ -50,8 +55,8 @@ angular.module('Pow', [])
                             }
                         },
                         stopHandler = function () {
-                            $('.main-container').off(moveEventType);
-                            $('.main-container').off(endEventType);
+                            $(document).off(moveEventType);
+                            $(document).off(endEventType);
 
                             
                             
@@ -82,10 +87,10 @@ angular.module('Pow', [])
                             startAt  = ev.touches[0].pageX;
                         }   
 
-                        $('.main-container').on(moveEventType, moveHandler);
+                        $(document).on(moveEventType, moveHandler);
 
 
-                        $('.main-container').on(endEventType, function (){
+                        $(document).on(endEventType, function (){
                             stopHandler()
                         })
                     }

@@ -13,6 +13,17 @@
 	</header>
 </div>
 
+<div class="main-container" ng-show="$state.current.name == 'app.home'">
+	<div class="scroll-content" >
+		<div id="map" style="width:100%;height:100%"></div>
+	</div>
+	
+	<div id="callBtn" hm-tap="request()">
+		{{lang.REQUEST_BTN}}
+	</div>
+</div>
+
+
 <ui-view></ui-view>
 	
 <pow-menu>

@@ -2,8 +2,8 @@
 
 
 angular.module('SudaTaxi')
-    .factory('gmaps', ['$rootScope', '$timeout' ,
-        function ($rootScope, $timeout) {
+    .factory('gmaps', ['$rootScope', '$timeout' , '$filter',
+        function ($rootScope, $timeout, $filter) {
         	var gMaps = {
         		LatLng: null,
                 lat: null,
@@ -65,7 +65,6 @@ angular.module('SudaTaxi')
                 },
 
                 getPositionSuccess: function (position) {
-                    console.log('getPositionSuccess', 'success', true);
 
                     gMaps.lastPosition = position;
                     gMaps.setLatLng(position);
@@ -80,8 +79,10 @@ angular.module('SudaTaxi')
 
                     gMaps.map.on('moveend', function (){
                     	// Get Address Info From LatLng
-                    	gMaps.geocoder.geocode({'latLng': gMaps.map.getCenter()}, function (results, status) { 
+                        var GLatLng = new google.maps.LatLng(gMaps.map.getCenter().lat, gMaps.map.getCenter().lng);
+                    	gMaps.geocoder.geocode({'latLng': GLatLng}, function (results, status) { 
 	                        if (status === 'OK') {
+
                              	gMaps.currentPoint.bindPopup(results[0].formatted_address).openPopup()
 	                        }
                     	});
@@ -103,10 +104,10 @@ angular.module('SudaTaxi')
                     }
 
                     me.currentPoint = L.marker(position, {
-                        icon: L.icon({
+                        /*icon: L.icon({
                             iconUrl: './images/me.png',
                             iconSize: [40, 62]
-                        })
+                        })*/
                     }).addTo(me.map);
 
                     me.currentPoint.on('click', function () { // Bắt sự kiện của người dùng trên bản đồ
@@ -114,6 +115,125 @@ angular.module('SudaTaxi')
                     });
 
                 },
+                getDirectionByGeoCode: function (start, address, cb) {
+                    var me = this;
+                    
+                    me.geocoder.geocode({address: address}, function (results, status) {
+
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            me.directionsService = new google.maps.DirectionsService();
+                            //me.map.panTo(results[0].geometry.location);
+
+                            
+
+                            var request = {
+                                origin: start, // Start Position
+                                destination: address, // END Position
+                                travelMode: google.maps.TravelMode.DRIVING, // Phương tiện : đi bộ , oto , xe bus....
+                                unitSystem: google.maps.UnitSystem.METRIC
+                            };
+
+                            me.directionsService.route(request, function (result, status) {
+                                
+                                if (status == google.maps.DirectionsStatus.OK) {
+
+                                    var routes = result.routes[0]; // Contain all property about direction read more : https://developers.google.com/maps/documentation/javascript/referenceDirectionsResult
+                                    me.directionInfo = routes;
+
+                                    
+                                    $rootScope.infoRouter = 'Ước lượng: ' + routes.legs[0].distance.text + ' - ' + $filter('toCurrency')(Math.round(routes.legs[0].distance.value / 1000) * 12000) + ' VNĐ';
+                                    console.log($rootScope.infoRouter);
+                                    
+
+                                    
+                                    var point, route, points = [];
+
+                                    var decodePath = google.maps.geometry.encoding.decodePath(result.routes[0].overview_polyline);
+
+
+                                    for (var i = 0; i < decodePath.length; i++) { // Generate route on map
+                                        if (decodePath[i]) {
+                                            point = new L.LatLng(decodePath[i].lat(), decodePath[i].lng());
+                                            points.push(point);
+
+                                            if (i == 0) { // Create new marker at Start Point
+                                                if (gMaps.startPointMarker) {
+                                                    gMaps.map.removeLayer(gMaps.startPointMarker);
+                                                }
+
+                                                gMaps.startPointMarker = L.marker(new L.LatLng(decodePath[i].lat(), decodePath[i].lng()), {
+                                                    riseOnHover: true,
+                                                    alt: 'Điểm đi',
+                                                    /*icon: L.icon({
+                                                        iconUrl: './images/pin_blue.png',
+                                                        iconSize: [48, 48],
+                                                        popupAnchor: [0, -20]
+                                                    })*/
+                                                }).addTo(me.map).bindPopup('Điểm đi :' + routes.legs[0].start_address);
+
+                                                gMaps.map.panTo(new L.LatLng(decodePath[i].lat(), decodePath[i].lng()));
+                                            }
+
+                                            if (i == decodePath.length - 1) { // Create new marker at end point
+
+                                                if (gMaps.endPointMarker) {
+                                                    gMaps.map.removeLayer(gMaps.endPointMarker);
+                                                }
+
+                                                gMaps.endPointMarker = L.marker(new L.LatLng(decodePath[i].lat(), decodePath[i].lng()), {
+                                                    riseOnHover: true,
+                                                    alt: 'Điểm đi',
+                                                    /*icon: L.icon({
+                                                        iconUrl: './images/pinIconPink.png',
+                                                        iconSize: [48, 48],
+                                                        popupAnchor: [0, -20]
+                                                    })*/
+                                                }).addTo(me.map).bindPopup('Điểm đến :' + routes.legs[0].end_address);
+                                            }
+                                        }
+                                    }
+
+                                    if (me.RoutePolyline) {
+                                        me.map.removeLayer(me.RoutePolyline);
+                                    }
+
+                                    me.RoutePolyline = new L.Polyline(points, {
+                                        weight: 3,
+                                        opacity: 0.5,
+                                        smoothFactor: 1
+                                    }).addTo(gMaps.map);
+
+                                    me.RoutePolyline.bringToFront();
+
+
+                                   
+
+                                    /*$rootScope.$apply(function () {
+
+                                        if (Math.round(routes.legs[0].distance.value / 1000) * 12000 > 0) {
+
+                                            $rootScope.distanceCheck = routes.legs[0].distance.value;
+                                            if (!$rootScope.status.hasRouter) {
+                                                $rootScope.pageTitleCalu = 'Ước lượng: ' + routes.legs[0].distance.text + ' - ' + $filter('toCurrency')(Math.round(routes.legs[0].distance.value / 1000) * 12000) + ' VNĐ';
+                                            }
+
+                                            $rootScope.stepDirection = routes.legs[0].steps;
+                                        } else {
+                                        }
+                                    });*/
+
+                                    /*(cb && angular.isFunction(cb)) ? cb(null, routes) : null;*/
+                                }
+
+                            });
+
+                        } else {
+                            (cb && angular.isFunction(cb)) ? cb(status, null) : null;
+
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    })
+                }
 
 
 

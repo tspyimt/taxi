@@ -294,7 +294,8 @@ angular.module('itaxiApp')
                         if (status == google.maps.GeocoderStatus.OK) {
                             me.directionsService = new google.maps.DirectionsService();
                             //me.map.panTo(results[0].geometry.location);
-
+                            console.log(results[0].geometry.location);
+                            
                             var request = {
                                 origin: start, // Start Position
                                 destination: results[0].geometry.location, // END Position
