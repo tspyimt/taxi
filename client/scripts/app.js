@@ -1,6 +1,7 @@
 angular.module('SudaTaxi', [
 	'ui.router',
 	'ngSanitize',
+	'ngResource',
 	'Pow',
 	'hmTouchEvents'
 ])
@@ -18,7 +19,19 @@ angular.module('SudaTaxi', [
 			url: "/",
 			abstract: true,
 			templateUrl: "views/app.html",
-			controller: function (){
+			resolve: {
+				lang: function ($rootScope, $translation, $q){
+					var defer = $q.defer();
+
+					$translation.getTranslation($rootScope, 'vi', function (data){
+						console.log('Lang, ', data);
+						defer.resolve(data);
+					})
+					return defer.promise;
+
+				}
+			},
+			controller: function (lang){
 				console.log('hello')
 			}
 
@@ -57,9 +70,17 @@ angular.module('SudaTaxi', [
 
 	}]) // End module config 
 
-.run( ['$rootScope', '$state', function ($rootScope, $state){
+.run( ['$rootScope', '$state', '$translation', function ($rootScope, $state, $translation){
 	$rootScope.$state = $state;
+	var lang = 'vi';
 
+	$rootScope.toggleLang = function (){
+		lang = (lang == 'vi') ? 'en' : 'vi';
+		$translation.getTranslation($rootScope, lang, function (data){
+			console.log('Lang, ', data);
+			
+		})
+	}
 	console.log('Run');
 }])
 
