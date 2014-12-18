@@ -13,3 +13,4 @@ plugins
 .idea
 app/scripts/config.js
 client/bower_components
+driver/client/bower_components

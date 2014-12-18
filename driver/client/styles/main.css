@@ -1,0 +1,71 @@
+@font-face {
+  font-family: myriad;
+  src: url(../fonts/MYRIADPRO-REGULAR.OTF);
+}
+
+.clearfix{
+	clear:both;
+}
+
+
+.leaflet-popup-content{
+	max-width: 200px!important;
+}
+.menu-left li a{
+	text-decoration: none;
+	display: block;
+	margin-left:10px;
+	color:#333333;
+	font-family: myriad;
+}
+.menu-left li {
+    padding: 17px 10px !important;
+    margin-bottom: 1px;
+}
+.menu-left li.active {
+    background:#f2f2f2;
+}
+.menu-left li:hover {
+    background:#f2f2f2;
+}
+
+.avatar-circle{
+	border-radius:50%;
+	height:50px;
+	width:50px;
+	background:#cdcdcd;
+}
+.userInfo .avatar-circle{
+	float:left;
+	overflow: hidden;
+}
+
+.userInfo{
+	overflow: hidden;
+	background: #5EB95E;
+	color: white;
+	padding: 10px;
+	font-family: myriad;
+}
+
+.userInfo .info{
+	float:left;
+	margin-left:10px;
+}
+
+#callBtn{
+	width: 70px !important;
+	height: 70px !important;
+	position: fixed;
+	background: none repeat scroll 0% 0% #5EB95E;
+	bottom: 80px;
+	right: 20px;
+	border-radius: 50%;
+	color: #FFF;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 70px;
+	font-weight: bold;
+	z-index: 999;
+	box-shadow: 1px 2px 5px #cdcdcd;
+}
