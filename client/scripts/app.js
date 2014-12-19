@@ -66,14 +66,13 @@ angular.module('SudaTaxi', [
 		.state('wellcome', {
 			url: "/wellcome",
 			templateUrl: "views/wellcome.html",
-			controller: function (gmaps){
-				
-			}
+			controller: 'WellcomeCtrl'
 		})
 
 	}]) // End module config 
 
 .run( ['$rootScope', '$state', '$translation', function ($rootScope, $state, $translation){
+	
 	$rootScope.$state = $state;
 	var lang = 'vi';
 
