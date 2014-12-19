@@ -257,6 +257,7 @@ html, body {
   transform: translate3d(-250px, 0, 0);
   top: 55px;
   background: #ffffff;
+  box-shadow: 2px 1px 10px rgba(0,0,0,0.3);
 }
 
 .pow-app .menu-animate{
