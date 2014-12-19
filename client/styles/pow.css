@@ -135,7 +135,7 @@ html, body {
 	width: 100%;
 }
 .pow-app .header-container header{
-	background: none repeat scroll 0% 0% #FCDE2B;
+	background: none repeat scroll 0% 0%  #181818 ; /* #FCDE2B; */
 }
 
 .pow-app .header-container header {
@@ -208,6 +208,7 @@ html, body {
 	vertical-align: middle;
 	font-size: 34px;
   padding: 10px 12px;
+  color: #FCDE2B;
 }
 .pow-app .padding{
 	padding: 0.5em 1em;
